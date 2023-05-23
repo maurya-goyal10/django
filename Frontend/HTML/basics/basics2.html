@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Basics 2</title>
+</head>
+<body>
+	<h1>Tables</h1>
+	<table border=1>
+		<thead>
+			<th>Country Name </th>
+			<th>Country Flag </th>
+			<th>GDP (millions of USD)</th>
+		</thead>
+		<tr>
+			<td>United States</td>
+			<td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/190px-Flag_of_the_United_States.svg.png" alt=""></td>
+			<td>18,561,930</td>
+		</tr>
+		<tr>
+			<td>India</td>
+			<td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/150px-Flag_of_India.svg.png" alt=""></td>
+			<td>12,250,990</td>
+		</tr>
+		<tr>
+			<td>United Kingdom</td>
+			<td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/200px-Flag_of_the_United_Kingdom.svg.png" alt=""></td>
+			<td>2,649,890</td>
+		</tr>
+	</table>
+
+	<h1>Course Sign Up Page</h1>
+	<form action="basics.html">
+		<p>Please Note: First Name, Last Name, Password, and Email are required </p>
+		<label for="fn">First Name: </label>
+		<label for="ln">Last Name: </label>
+		<label for="email">Email: </label>
+		<label for="pass">Password: </label>
+
+		<p>
+			<input id= "fn" type="text" placeholder="First Name" required> 
+			<input type="text" id="ln" placeholder="Last Name" required>
+		</p>
+		<p>
+			<input type="email" id="email" placeholder="name@gmail.com" required>
+			<input type="password" id="pass" required>
+		</p>
+		
+		<p>Are you over the age of 18?</p>
+		Yes: <input type="radio" name="age">
+		No: <input type="radio" name="age">
+
+		<p>Do you have a Credit Card or PayPal?</p>
+		<select name="payment">
+			<option value="cc">Credit Card</option>
+			<option value="pp">Pay Pal</option>
+		</select>
+
+		<input type="submit" value="Submit Feedback">
+	</form>
+
+	
+</body>
+</html>
