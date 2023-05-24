@@ -1,0 +1,39 @@
+body{
+	text-align: center;
+}
+
+h1{
+	text-transform: capitalize;
+	font-family: 'Dancing Script', cursive;
+}
+
+table, td{
+	border-spacing: 5px;
+	margin: auto;
+}
+
+.d{
+	height: 250px;
+	width: 200px;
+}
+
+#div1{
+	background-color: #8e9aaf;
+}
+
+#div2{
+	background-color: #cbc0d3;
+}
+
+#div3{
+	background-color: #efd3d7;
+}
+
+#div4{
+	background-color: #feeafa;
+}
+
+#div5{
+	background-color: #dee2ff;
+}
+
