@@ -1,0 +1,23 @@
+body,h1,h3{
+	margin: auto;
+	text-align: center;
+}
+table{
+	margin: auto;
+	margin-top: 3%;
+}
+.r div,.cr div,.cb div{
+	height: 75px;
+	width: 75px;
+	background-color: darkgray;
+	border: 5px solid black;
+	border-radius: 100%;
+}
+
+.cr div{
+	background-color: red;
+}
+
+.cb div{
+	background-color: royalblue;
+}
