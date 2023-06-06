@@ -63,7 +63,6 @@ class Clash():
                 d1,d2 = self.war(d1,d2,c)
         return d1,d2
                 
-    
     def play(self):
         j = 300
         while (len(self.a) > 0 and len(self.b) > 0 and j >0 ):
@@ -83,8 +82,6 @@ class Clash():
           shuffle(self.b)
           return self.play()
             
-            
-
 d = Deck()
 p1,p2 = d.distribute_and_shuffle()
 c = Clash(p1,p2)
