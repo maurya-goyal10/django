@@ -5,7 +5,7 @@ from django.urls import path,re_path
 app_name = 'basic'
 
 urlpatterns = [
-    re_path(r'^$',views.base,name='base'),
+    re_path(r'^$',views.index,name='index'),
     path('other/',views.other,name='other'),
     path('relative/',views.relative,name='relative'),
 ]
