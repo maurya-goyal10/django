@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title_block %} {% endblock %} </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="{% url 'index' %}" class="navbar-brand">MYSITE</a>
+            </div>
+            <ul class="navbar-nav nav">
+                <li> <a href="{% url 'admin:index' %}" class="nav-item">ADMIN</a></li>
+                <li> <a href="{% url 'base:register' %}" class="nav-item">REGISTER</a></li>
+
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'user_logout' %}" class="navbar-item">LOGOUT</a></li>
+                {% else %} 
+                    <li><a href="{% url 'base:user_login' %}" class="navbar-item">LOGIN</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        {% block body_block %}
+
+        {% endblock %}
+    </div>
+    
+</body>
+</html>
