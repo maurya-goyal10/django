@@ -1,0 +1,14 @@
+{% extends 'basic_app/basic_app_base.html' %}
+{% block title_block %}
+    SCHOOL PAGE
+{% endblock %}
+{% block body_block %}
+    <div class="jumbotron">
+        <h1>WELCOME TO THE PAGE CONTAINING DETAILS ABOUT ALL THE SCHOOLS !</h1>
+        <ol>
+            {% for school in schools %}
+                <li> <a href="{% url 'base:school_detail' pk=school.pk %}">{{ school.name }}</a></li>
+            {% endfor %}
+        </ol>
+    </div>
+{% endblock %}
