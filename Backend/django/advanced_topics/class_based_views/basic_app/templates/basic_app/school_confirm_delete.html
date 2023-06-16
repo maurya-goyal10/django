@@ -1,0 +1,14 @@
+{% extends 'basic_app/basic_app_base.html' %}
+{% block title_block %}
+     CONFIRM DELETE
+{% endblock %}
+{% block body_block %}
+    <div class="jumbotron">
+        <h1>ARE YOU SURE YOU WANT TO DELETE THE SCHOOL {{school.name}}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="DELETE" class="btn btn-danger">
+            <button class="btn"><a href="{% url 'base:school_detail' pk=school.pk %}">Cancel</a></button>
+        </form>    
+    </div>
+{% endblock %}
