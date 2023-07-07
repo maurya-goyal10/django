@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,10 +9,61 @@
         
         {% endblock title %}
     </title>
+    <!-- BOOTSTRAP  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- ADDING THE MEDIUM  -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+    <!-- LINKING CUSTOM CSS  -->
+    <link rel="stylesheet" href="{% static "css/styles.css"  %}">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    {% block body_block %}
 
-    {% endblock body_block %}
+    <!-- NAVBAR  -->
+    <nav class="navbar navbar-inverse technav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="{% url 'blog:post_list' %}" class="navbar-brand">MYSITE</a>
+            </div>
+            <ul class="navbar-nav nav">
+                <li> <a href="{% url 'admin:index' %}" class="nav-item">ADMIN</a></li>
+                <li> <a href="{% url 'blog:about' %}" class="nav-item">ABOUT</a></li>
+            </ul>
+            
+            <ul class="navbar-nav nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}" class="navbar-item">LOGOUT</a></li>
+                    <li><a href="{% url 'blog:post_new' %}" class="navbar-item">NEW POST</a></li>
+                    <li><a href="{% url 'blog:post_draft_list' %}" class="navbar-item">DRAFTS</a></li>
+                    <li><a class="navbar-item"> WELCOME {{user.username}}</a></li>
+                {% else %} 
+                    <li> <a href="{% url 'signup' %}" class="nav-item">REGISTER</a></li>
+                    <li><a href="{% url 'login' %}" class="navbar-item">LOGIN</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog_posts">
+                    {% block body_block %}
+                
+                    {% endblock body_block %}
+                </div>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>

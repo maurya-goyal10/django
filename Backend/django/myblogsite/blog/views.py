@@ -1,12 +1,13 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from django.shortcuts import render,get_object_or_404,redirect
+from django.shortcuts import render,get_object_or_404,redirect,HttpResponseRedirect,HttpResponse
 from blog.models import Post,Comment
 from blog import forms
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
 from django.views.generic import (TemplateView,ListView,DetailView,
                                   CreateView,UpdateView,DeleteView)
 
@@ -57,7 +58,6 @@ def publish_post(request,pk):
     post.publish()
     return redirect('post_detail',pk=pk)
     
-
 @login_required
 def add_comment_to_post(request,pk):
     post = get_object_or_404(Post,pk=pk)
@@ -86,4 +86,66 @@ def remove_comment(request,pk):
     post_pk = comment.post.pk
     comment.delete()
     return redirect('post_detail',pk=post_pk)
+
+###############################################
+###############################################
+
+def user_signup(request):
+    registered = False
     
+    if request.method == 'POST':
+        form_user = forms.UserForm(request.POST)
+        form_profile = forms.UserProfileForm(request.POST)
+        
+        if form_user.is_valid() and form_profile.is_valid():
+            user = form_user.save(commit=False)
+            user.set_password(user.password)
+            user.save()
+            
+            profile = form_profile.save(commit = False)
+            profile.user = user
+            
+            if 'profile_pic' in request.FILES:
+                profile.profile_pic = request.FILES['profile_pic']
+                
+            profile.save()
+            registered = True
+            
+        else:
+            print(form_user.errors,form_profile.errors)
+            
+    else:
+        form_user = forms.UserForm()
+        form_profile = forms.UserProfileForm()
+        
+    return render(request,'registration/signup.html',{'registered': registered,
+                            'form_user': form_user,
+                            'form_profile': form_profile,
+                            })
+        
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(username=username,password=password)
+        
+        if user:
+            if user.is_active:
+                login(request,user)
+                return HttpResponseRedirect(reverse('blog:post_list'))
+            
+            else:
+                return HttpResponse("User not active!!")
+            
+        else:
+            return HttpResponse("Invalid Login!")
+        
+    else:
+        return render(request,'registration/login.html')
+    
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('blog:post_list'))
+

@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    SIGNUP PAGE
+{% endblock title %}
+
+{% block body_block %}
+    <div class="jumbotron">
+        <h2>Please Signup and enter the details</h2>
+        {% if registered  %}
+            <p>THANK YOU FOR REGISTERING</p>
+
+        {% else %}
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form_user.as_p }}
+                {{ form_profile.as_p }}
+                <input type="submit" value="REGISTER">
+            </form>
+        {% endif %}
+    </div>
+{% endblock body_block %}

@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    LOGIN PAGE
+{% endblock title %}
+
+{% block body_block %}
+    <div class="jumbotron">
+        <h2>Please Login</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">Username: </label>
+            <input type="text" name="username" placeholder="Enter Username">
+            <label for="password">Password: </label>
+            <input type="password" name="password">
+
+            <input type="submit" class="btn btn-primary" value="Login">
+            <a href="{% url 'signup'%}">New User</a>
+        </form>
+    </div>
+{% endblock body_block %}

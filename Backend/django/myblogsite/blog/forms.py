@@ -1,5 +1,6 @@
 from django import forms
-from blog.models import Post,Comment
+from blog.models import Post,Comment,Profile
+from django.contrib.auth.models import User
 
 class PostForm(forms.ModelForm):
     
@@ -23,3 +24,19 @@ class CommentForm(forms.ModelForm):
             'text' : forms.Textarea(attrs={'class': 'editable medium-editor-textarea'})
         }
 
+class UserForm(forms.ModelForm):
+    
+    class Meta():
+        model = User
+        fields = ('username','email','password')
+        
+        widgets = {
+            'password': forms.PasswordInput()
+        }
+
+class UserProfileForm(forms.ModelForm):
+    
+    class Meta():
+        model = Profile
+        fields = ('profile_pic',)
+        
