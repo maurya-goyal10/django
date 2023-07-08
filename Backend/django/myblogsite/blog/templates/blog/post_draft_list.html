@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    LIST OF DRAFT POSTS
+{% endblock title %}
+{% block body_block %}
+    <h1 class="center_heading">DRAFT POST LISTS</h1>
+    <ol>
+        {% for draft in drafts %}
+            <li>
+                <div class="centerpost">
+                        <h1>
+                            <a href="{% url 'blog:post_detail' pk=draft.pk %}">{{draft.title}}</a>
+                        </h1>
+                        <p>{{draft.create_date|date:"N d,Y"}}</p>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'blog:publish_post' pk=draft.pk %}"><span class="glyphicon glyphicon-plus-sign"></span>PUBLISH</a>
+                            <a href="{% url 'blog:post_remove' pk=draft.pk %}"><span class="glyphicon glyphicon-remove"></span>REMOVE</a>
+                        {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ol>
+
+{% endblock body_block %}
+

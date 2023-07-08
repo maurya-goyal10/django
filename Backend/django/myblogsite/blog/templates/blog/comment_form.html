@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    ADD COMMENT
+{% endblock title %}
+{% block body_block %}
+    <h1 class="center_heading">CREATE COMMENT</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class="btn btn-success" value="CREATE COMMENT">
+    </form>
+{% endblock body_block %}
+

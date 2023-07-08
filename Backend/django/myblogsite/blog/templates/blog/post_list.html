@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    HOME PAGE
+{% endblock title %}
+{% block body_block %}
+    <h1 class="center_heading">POSTS</h1>
+    <ol>
+        {% for post in posts %}
+            <div class="centerpost">
+                <li>
+                    <h1>
+                        <a href="{% url 'blog:post_detail' pk=post.pk %}">{{post.title}}</a>
+                    </h1>
+                    <p>{{post.create_date|date:"N d,Y"}}</p>
+                    <a href="{% url 'blog:post_detail' pk=post.pk %}">Comments: {{post.approve_comments.count}}</a>
+                </li>
+            </div>
+
+        {% endfor %}
+    </ol>
+
+{% endblock body_block %}
+

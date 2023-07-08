@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    EDIT POST
+{% endblock title %}
+{% block body_block %}
+    <h1 class="center_heading">
+        {% if not form.instance.pk %}
+            CREATE POST
+        {% else %}
+            UPDATE POST
+        {% endif %}
+    </h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="SUBMIT" class="btn btn-success">
+    </form>
+
+{% endblock body_block %}
+
