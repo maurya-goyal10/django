@@ -16,7 +16,6 @@ POST DETAILS
     <a href="{% url 'blog:post_remove' pk=post.pk %}"><p class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>Remove Post</p></a>
     {% endif %}
 
-
     <h3>Comments:</h3>
     {% for comment in comments %}
         {% if user.is_authenticated or comment.approved_comment %}

@@ -6,9 +6,9 @@
     <h1 class="center_heading">POSTS</h1>
     <ol>
         {% for post in posts %}
-            <div class="centerpost">
+            <div class="centerpost ">
                 <li>
-                    <h1>
+                    <h1 class="loader">
                         <a href="{% url 'blog:post_detail' pk=post.pk %}">{{post.title}}</a>
                     </h1>
                     <p>{{post.create_date|date:"N d,Y"}}</p>
