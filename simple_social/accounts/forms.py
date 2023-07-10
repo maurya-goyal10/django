@@ -6,7 +6,7 @@ class UserCreateForm(UserCreationForm):
     
     class Meta:
         
-        model = get_user_model
+        model = get_user_model()
         fields = ('username','email','password1','password2')
         labels = {
             'username' : 'Given Name',

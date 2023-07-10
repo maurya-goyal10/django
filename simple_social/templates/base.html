@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,10 +9,47 @@
 
         {% endblock %}
     </title>
+    <!-- BOOTSTRAP  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- CUSTOM CSS  -->
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
+
 </head>
 <body>
-    {% block content_block %}
 
-    {% endblock %}
+    <nav class="navbar navbar-inverse technav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="{% url 'home' %}" class="navbar-brand">Home Page</a>
+            </div>
+            <ul class="navbar-nav nav">
+                <li> <a href="{% url 'admin:index' %}" class="nav-item">ADMIN</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a href="#" class="navbar-item">Posts</a></li>
+                    <li><a href="#" class="navbar-item">Groups</a></li>
+                    <li><a href="#" class="navbar-item">Create Group</a></li>
+                    <li><a href="{% url 'accounts:logout' %}" class="navbar-item">Logout</a></li>
+                    
+                {% else %}
+                    <li><a href="#" class="navbar-item">Groups</a></li>
+                    <li><a href="{% url 'accounts:login' %}" class="navbar-item">Login</a></li>
+                    <li><a href="{% url 'accounts:signup' %}" class="navbar-item">SignUp</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container my-content">
+        {% block content_block %}
+    
+        {% endblock %}
+    </div>
 </body>
 </html>
