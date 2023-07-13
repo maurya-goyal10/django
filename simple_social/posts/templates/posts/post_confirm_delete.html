@@ -1,0 +1,22 @@
+{% extends 'posts/post_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title_block %}
+    DELETE POST
+{% endblock %}
+
+{% block post-content %}
+    <h3>Are you sure you want to delete this post? </h3>
+
+    <div class="posts">
+        {% include 'posts/_post.html' with post=object hide_delete = True %}
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm Delete" class="btn btn-large btn-danger">
+        <a href="{% url 'posts:single' pk=object.pk username=user.username %}" 
+        class="btn btn-default btn-large btn-simple">Cancel</a>
+    </form>
+
+{% endblock %}

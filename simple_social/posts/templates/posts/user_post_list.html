@@ -1,0 +1,21 @@
+{% extends 'posts/post_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title_block %}
+    USER POST DETAILS
+{% endblock %}
+
+{% block prepost %}
+    <div class="col-md-4">
+        <h1>@{{post.user.username}}</h1>
+    </div>
+    {% endblock %}
+    
+    {% block post-content %} 
+    <div class="col-md-8">
+        {% for post in post_list %}
+            {% include 'posts/_post.html'%} 
+        {% endfor %}
+    </div>
+
+{% endblock %}

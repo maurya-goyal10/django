@@ -1,0 +1,12 @@
+{% extends 'posts/post_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title_block %}
+    POST DETAILS
+{% endblock %}
+
+{% block post-content %}
+    <div class="col-md-8">
+        {% include 'posts/_post.html'%}
+    </div>
+{% endblock %}

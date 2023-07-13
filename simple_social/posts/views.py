@@ -12,6 +12,8 @@ from braces.views import SelectRelatedMixin
 from . import models
 from . import forms
 
+from groups.models import Group
+
 User = get_user_model()
 
 # Create your views here.
@@ -20,6 +22,10 @@ User = get_user_model()
 class PostList(SelectRelatedMixin,generic.ListView):
     model = models.Post
     select_related = ('user','group')
+    
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        context['other_groups'] = Group.objects.exclude(members__in=[self.request.user])
     
 class UserPost(generic.ListView):
     model = models.Post
