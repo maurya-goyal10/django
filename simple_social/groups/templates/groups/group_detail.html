@@ -27,7 +27,9 @@
         {% if group.post.count == 0%}
             <h2>No Posts in this group yet!!</h2>
         {% else %}
-            {% include 'posts/_post.html' %}
+            {% for post in group.post.objects.all %}
+                {% include 'posts/_post.html' %}
+            {% endfor %}
         {% endif %}
     </div>
 {% endblock %}

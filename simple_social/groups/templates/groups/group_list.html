@@ -9,7 +9,7 @@
         <div class="content">
             {% if user.is_authenticated %}
                 <h2>Welcome back! 
-                    <a href="{% url 'posts:for_user' username = user.username %}">
+                    <a href="{% url 'posts:for_user' username=user.username %}">
                         @{{user.username}}
                     </a>
                 </h2>
@@ -18,7 +18,7 @@
             <p>Welcome to the groups page </p>
         </div>
 
-        {% if user.is_athenticated %}
+        {% if user.is_authenticated %}
             <a href="{% url 'groups:create' %}" class="btn btn-md btn-fill btn-success">
                 <span class="glyphicon glyphicon-plus-sign"></span>CREATE NEW GROUP
             </a>

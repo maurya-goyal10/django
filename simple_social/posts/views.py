@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import get_user_model
 from django.http import Http404, HttpResponse
 from django.views import generic
+from django.contrib import messages
 
 from braces.views import SelectRelatedMixin
 

@@ -3,7 +3,7 @@ from django.utils.text import slugify
 from django.contrib.auth import get_user_model
 from django import template
 from django.urls import reverse
-import mikasa
+import misaka
 
 # Create your models here.
 # Groups.models.py file
@@ -18,7 +18,7 @@ register = template.Library()
 
 class Group(models.Model):
     name = models.CharField(max_length=225,unique=True)
-    slug = models.CharField(allow_unicode = True,unique=True)
+    slug = models.CharField(max_length=225,unique=True)
     description = models.TextField(blank=True,default='')
     description_html = models.TextField(editable=False,blank=True,default='')
     members = models.ManyToManyField(User,through='GroupMember')
@@ -27,8 +27,8 @@ class Group(models.Model):
         return self.name
     
     def save(self,*args,**kwargs):
-        self.slug = slugify(self.name)
-        self.description_html = mikasa(self.description)
+        self.slug = slugify(self.name,allow_unicode=True)
+        self.description_html = misaka.html(self.description)
         super().save(*args,**kwargs)
         
     def get_absolute_url(self):

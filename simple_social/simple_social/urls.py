@@ -23,4 +23,6 @@ urlpatterns = [
     path('thanks/',views.ThanksView.as_view(),name='thanks'),
     path('accounts/',include('accounts.urls',namespace='accounts')),
     path('accounts/',include('django.contrib.auth.urls')),
+    path('posts/',include('posts.urls',namespace='posts')),
+    path('groups/',include('groups.urls',namespace='groups')),
 ]
