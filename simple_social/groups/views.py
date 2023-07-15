@@ -21,7 +21,7 @@ class ListGroups(generic.ListView):
     
 class JoinGroup(LoginRequiredMixin,generic.RedirectView):
     def get_redirect_url(self, *args, **kwargs):
-        return reverse('group:single',kwargs={'slug':self.kwargs.get('slug')})
+        return reverse('groups:single',kwargs={'slug':self.kwargs.get('slug')})
     
     def get(self, request, *args, **kwargs):
         group = get_object_or_404(Group,slug=self.kwargs.get('slug'))
@@ -37,15 +37,14 @@ class JoinGroup(LoginRequiredMixin,generic.RedirectView):
 
 class LeaveGroup(LoginRequiredMixin,generic.RedirectView):
     def get_redirect_url(self, *args, **kwargs):
-        return reverse('group:single',kwargs={'slug':self.kwargs.get('slug')})
+        return reverse('groups:single',kwargs={'slug':self.kwargs.get('slug')})
     
-    def get(self, request, *args, **kwargs):
-        group = get_object_or_404(Group,slug=self.kwargs.get('slug'))
-        
+    def get(self, request, *args, **kwargs):        
         try:
-            membership = GroupMember.filter(
+            membership = GroupMember.objects.filter(
                 user = self.request.user , 
                 group__slug = self.kwargs.get('slug')).get()
+            
         except:
             messages.warning(self.request,"Sorry! You're not a member of this group")
         else:

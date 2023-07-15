@@ -35,7 +35,9 @@
 {% endblock %}
 
 {% block postgroup_block %} 
-
-
-
+    {% if messages %}
+        {% for message in messages %}
+            <h4>{{message}}</h4>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
