@@ -27,6 +27,7 @@ class PostList(SelectRelatedMixin,generic.ListView):
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context['other_groups'] = Group.objects.exclude(members__in=[self.request.user])
+        return context
     
 class UserPost(generic.ListView):
     model = models.Post
