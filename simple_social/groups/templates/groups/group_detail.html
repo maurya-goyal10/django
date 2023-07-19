@@ -24,10 +24,10 @@
 
 {% block group_content_block %}
     <div class="col-md-8">
-        {% if group.post.count == 0%}
+        {% if group.posts.count == 0%}
             <h2>No Posts in this group yet!!</h2>
         {% else %}
-            {% for post in group.post.objects.all %}
+            {% for post in group.posts.all %}
                 {% include 'posts/_post.html' %}
             {% endfor %}
         {% endif %}
@@ -35,9 +35,11 @@
 {% endblock %}
 
 {% block postgroup_block %} 
-    {% if messages %}
-        {% for message in messages %}
-            <h4>{{message}}</h4>
-        {% endfor %}
-    {% endif %}
+    <div class="col-md-8">
+        {% if messages %}
+            {% for message in messages %}
+                <h4>{{message}}</h4>
+            {% endfor %}
+        {% endif %}
+    </div>
 {% endblock %}

@@ -31,7 +31,7 @@
             
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'posts:all' %}" class="navbar-item">Posts</a></li>
+                    <li><a href="{% url 'posts:create' %}" class="navbar-item">Posts</a></li>
                     <li><a href="{% url 'groups:all' %}" class="navbar-item">Groups</a></li>
                     <li><a href="{% url 'groups:create' %}" class="navbar-item">Create Group</a></li>
                     <li><a href="{% url 'accounts:logout' %}" class="navbar-item">Logout</a></li>

@@ -1,7 +1,7 @@
 from django.db import models
 from groups.models import Group,GroupMember
 from django.utils.text import slugify
-import mikasa
+import misaka
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django import template
@@ -23,10 +23,10 @@ class Post(models.Model):
         return self.message
     
     def save(self,*args,**kwargs):
-        self.message_html = mikasa(self.message)
+        self.message_html = misaka.html(self.message)
         super().save(*args,**kwargs)
         
-    def get_absolue_url(self):
+    def get_absolute_url(self):
         return reverse('posts:single',kwargs={'username':self.user.get_username(),
                                               'pk':self.pk})
         

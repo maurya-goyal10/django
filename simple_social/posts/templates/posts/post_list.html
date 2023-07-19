@@ -37,8 +37,7 @@
         {% for other_group in other_groups %}
                 <a href="{% url 'groups:single' slug=other_group.slug %}">{{other_group}}</a>
         {% endfor %}
-    <h3>{{request.user.user_groups}}</h3>
-    <h3>{{other_group}}</h3>
+    <h3> Hi  -- {{request.user.user_groups}}</h3>
 {% endblock %}
 
 {% block post-content %}

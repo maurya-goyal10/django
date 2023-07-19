@@ -3,10 +3,12 @@
     <div class="media-body">
         <h5 class="media-heading">
             <a href="{% url 'posts:for_user' username=post.user.username%}">
-                <strong>{{post.user.username}}</strong>
+                <strong>@{{post.user.username}}</strong>
             </a>
             <time class="time">
-                <a href="{% url 'posts:single' username=post.user.username pk=post.pk%}"></a>
+                <a href="{% url 'posts:single' username=post.user.username pk=post.pk%}">
+                    {{post.created_at}}
+                </a>
             </time>
         </h5>
 
