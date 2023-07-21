@@ -12,9 +12,14 @@
                 <div class="content">
                     <h3 class="title">Your Groups</h3>
                     <ul class="list-unstyled">
-                        {% for member_group in user_groups %}
+                        <!-- {% for member_group in user_groups %}
                             <li class="group li-with-bullet">
                                 <a href="{% url 'groups:single' slug=member_group.group.slug %}">{{member_group.group.name}}</a>
+                            </li>
+                        {% endfor %} -->
+                        {% for member_group in request.user.user_groups.all %}
+                            <li class="group li-with-bullet">
+                                <a href="{% url 'groups:single' slug=member_group.group.slug %}">{{member_group.group}}</a>
                             </li>
                         {% endfor %}
                     </ul>
@@ -23,27 +28,34 @@
         {% endif %}
         <div class="card card-with-shadow">
             <div class="content">
-                <h3 class="title">All Groups</h3>
+                <h3 class="title">Other Groups</h3>
                 <ul class="list-unstyled">
-                {% for other_group in other_groups %}
+                <!-- {% for other_group in other_groups %}
                     <li class="group li-with-bullet">
                         <a href="{% url 'groups:single' slug=other_group.slug %}">{{other_group.group.name}}</a>
                     </li>
-                {% endfor %}
+                {% endfor %} -->
+                    {% for other_group in other_groups %}
+                        <li class="group li-with-bullets">
+                            <a href="{% url 'groups:single' slug=other_group.slug %}">{{other_group}}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
     </div>
-        {% for other_group in other_groups %}
-                <a href="{% url 'groups:single' slug=other_group.slug %}">{{other_group}}</a>
-        {% endfor %}
-    <h3> Hi  -- {{request.user.user_groups}}</h3>
 {% endblock %}
 
 {% block post-content %}
     <div class="col-md-8">
+        <h2>Posts</h2>
+        <a href="{% url 'posts:create' %}" class="btn btn-md btn-fill btn-success">
+            <span class="glyphicon glyphicon-plus-sign"></span>CREATE NEW POST
+        </a>
         {% for post in post_list %}
             {% include 'posts/_post.html' %}
         {% endfor %}
     </div>
 {% endblock %}
+
+

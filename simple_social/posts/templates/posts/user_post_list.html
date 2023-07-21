@@ -16,6 +16,13 @@
         {% for post in post_list %}
             {% include 'posts/_post.html'%} 
         {% endfor %}
+
+        {% if post_list.count == 0 %}
+            <h3>No posts by the user yet</h3>
+            <a href="{% url 'posts:create' %}" class="btn btn-md btn-fill btn-success">
+                <span class="glyphicon glyphicon-plus-sign"></span>CREATE NEW POST
+            </a>
+        {% endif %}
     </div>
 
 {% endblock %}
