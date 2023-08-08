@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <title>
         {% block titleblock %}
 
@@ -13,16 +15,16 @@
     </title>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar ">
         <div class="container-fluid">
                 <a href="{% url 'home' %}" class="navbar-brand">Home</a>
             <ul class="nav navbar-nav">
-                <li><a href="#" class="nav navbar-item"></a></li>
+                <li style="list-style-type: none;"><a href="#" class="nav navbar-item"></a></li>
             </ul>
 
             <ul class="navbar navbar-nav navbar-right">
-                <li><a href="" class="nav navbar-item"><span class="glyphicon glyphicon-user"></span> Sign Up &nbsp  </a></li>
-                <li><a href="" class="nav navbar-item"><span class="glyphicon glyphicon-log-in"></span> Login &nbsp </a></li>
+                <li style="list-style-type: none;"><a href="#" class="nav navbar-item"><span class="glyphicon glyphicon-user"></span> Sign Up &nbsp  </a></li>
+                <li style="list-style-type: none;"><a href="#" class="nav navbar-item"><span class="glyphicon glyphicon-log-in"></span> Login &nbsp </a></li>
             </ul>
         </div>
     </nav>
