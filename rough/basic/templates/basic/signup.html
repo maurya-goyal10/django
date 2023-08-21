@@ -6,10 +6,15 @@
 {% endblock %}
 
 {% block bodyblock %}
-    <h1>SIGN UP</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form|crispy}}
-        <input type="submit" value="SIGNUP">
-    </form>
+    {% if not registered %}
+        <h1>SIGN UP {{registered}}</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form|crispy}}
+            {{profile_form|crispy}}
+            <input type="submit" value="SIGNUP">
+        </form>
+    {% else %}
+            <h1>REGISTERED SUCCESSFULLY</h1>
+    {% endif %}
 {% endblock %}
