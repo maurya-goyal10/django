@@ -3,6 +3,13 @@ body{
     color: aliceblue;
 }
 
+input, select, textarea{
+    color: #ff0000;
+}
+
+textarea:focus, input:focus {
+    color: #ff0000;
+}
 .center-heading{
     text-align: center;
 }

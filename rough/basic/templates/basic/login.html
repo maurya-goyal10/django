@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block bodyblock %}
+    <div class="container bg-dark text-white ">
+        <h1>LOGIN</h1>
+        {% if message != ""%}
+            <h3 style="color: red;">{{message}}</h3>
+        {% endif %}
+        <form action="{%url 'basic:login'%}" method="POST">
+            {%csrf_token%}
+            <label for="username">USERNAME</label>
+            <input type="text" name="username" id="username">
+            <label for="password">PASSWORD</label>
+            <input type="password" name="password" id="password">
+            <input type="submit" value="LOGIN" class="btn btn-success">
+        </form>  
+    </div>
+{% endblock %}
+
