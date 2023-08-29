@@ -24,7 +24,7 @@
 
             <ul class="navbar navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                    <li style="list-style-type: none;"><span class="nav navbar-item">{{user.username}}</span></li>
+                    <li style="list-style-type: none;"><span class="nav navbar-item">{{user.username}} &nbsp</span></li>
                     <li style="list-style-type: none;"><a href="{% url 'basic:logout' %}" class="nav navbar-item"><span class="glyphicon glyphicon-log-out"></span> Logout &nbsp </a></li>
                 {% else %}
                     <li style="list-style-type: none;"><a href="{%url 'basic:signup' %}" class="nav navbar-item"><span class="glyphicon glyphicon-user"></span> Sign Up &nbsp  </a></li>
